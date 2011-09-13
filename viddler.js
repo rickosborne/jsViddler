@@ -5,8 +5,8 @@
    	var lastRequest = 0;
    	var viddler;
    	var api = function(callName, callMethod, callArguments, callback) {
-   		// cl("[jsViddler:api:]");
    		var requestId = "" + (++lastRequest);
+   		cl("[jsViddler:api:" + requestId + "]");
    		openRequests[requestId] = callback;
    		viddler.jsonApiRequest(callName, callMethod, callArguments, requestId);
    	};
