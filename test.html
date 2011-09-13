@@ -8,6 +8,17 @@
 <body>
 <h1>jsViddler Test Page</h1>
 <div id="viddlerProxy"></div>
+<form>
+<dl>
+    <dt>API Key</dt>
+    <dd><input type="text" size="40" maxlength="40" name="apikey" id="apikey" />
+    <dt>Echo</dt>
+    <dd><input type="text" size="40" maxlength="40" name="echo" id="echo" /><input value="api.echo" type="button" onclick="jsViddler.setKey(this.form.apikey.value);jsViddler.echo(this.form.echo.value,function(msg){this.form.response.value=msg});" />
+    <dt>User</dt>
+    <dd><input type="text" size="40" maxlength="40" name="user" id="user" /><input value="videos.getByUser" type="button" onclick="jsViddler.setKey(this.form.apikey.value);jsViddler.getUserVideos(this.form.user.value,function(resp){this.form.response.value=JSON.stringify(resp)});" />
+    <dt>Response</dt>
+    <dd><textarea rows="10" cols="80" wrap="soft" name="response" id="response"></textarea></dd>
+</dl>
 <script type="text/javascript" src="swfobject.js"></script>
 <script type="text/javascript">
 // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
@@ -26,7 +37,7 @@ attributes.name = "jsViddler";
 attributes.align = "middle";
 swfobject.embedSWF(
     "jsViddler.swf", "viddlerProxy", 
-    "400", "300", 
+    "1", "1", 
     swfVersionStr, xiSwfUrlStr, 
     flashvars, params, attributes);
 // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
