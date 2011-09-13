@@ -59,9 +59,8 @@ var onUserVideosClick = function(f) {
     window.jsViddler.getUserVideos(f.user.value, handleApiResponse);
 };
 var onAnyClick = function(f) {
-    var o = JSON.parse(f.methodArgs.value);
-    window.jsViddler.setKey(f.methodName.value);
-    window.jsViddler.apiCall(n,"GET", o, handleApiResponse);
+    window.jsViddler.setKey(f.apikey.value);
+    window.jsViddler.apiCall(f.methodName.value,"GET", JSON.parse(f.methodArgs.value), handleApiResponse);
 };
 </script>
 <script type="text/javascript" src="viddler.js"></script>
