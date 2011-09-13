@@ -13,9 +13,9 @@
     <dt>API Key</dt>
     <dd><input type="text" size="40" maxlength="40" name="apikey" id="apikey" />
     <dt>Echo</dt>
-    <dd><input type="text" size="40" maxlength="40" name="echo" id="echo" /><input value="api.echo" type="button" onclick="jsViddler.setKey(this.form.apikey.value);jsViddler.echo(this.form.echo.value,function(msg){this.form.response.value=msg});" />
+    <dd><input type="text" size="40" maxlength="40" name="echo" id="echo" /><input value="api.echo" type="button" onclick="window.jsViddler.setKey(this.form.apikey.value);window.jsViddler.echo(this.form.echo.value,function(msg){this.form.response.value=msg});" />
     <dt>User</dt>
-    <dd><input type="text" size="40" maxlength="40" name="user" id="user" /><input value="videos.getByUser" type="button" onclick="jsViddler.setKey(this.form.apikey.value);jsViddler.getUserVideos(this.form.user.value,function(resp){this.form.response.value=JSON.stringify(resp)});" />
+    <dd><input type="text" size="40" maxlength="40" name="user" id="user" /><input value="videos.getByUser" type="button" onclick="window.jsViddler.setKey(this.form.apikey.value);window.jsViddler.getUserVideos(this.form.user.value,function(resp){this.form.response.value=JSON.stringify(resp)});" />
     <dt>Response</dt>
     <dd><textarea rows="10" cols="80" wrap="soft" name="response" id="response"></textarea></dd>
 </dl>
