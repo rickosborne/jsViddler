@@ -15,9 +15,9 @@
 			cl("[jsViddler:callback] Got an unexpected response:", requestId, data);
 			return;
 		}
-		cl("[jsViddler:callback]", data);
 		var callback = openRequests[requestId];
 		delete openRequests[requestId];
+		cl("[jsViddler:callback]", data, callback);
 		if (callback) {
 			var r = JSON.parse(data);
 			// cl("[jsViddler:callback]", r);
