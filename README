@@ -1,0 +1,18 @@
+This is a bog-simple Flash-to-JavaScript proxy for the Viddler API.
+The intent is to allow you to build solutions that call the Viddler API
+from within JavaScript, instead of from a server-side language.
+
+Bare minimum usage:
+
+<div id="viddlerProxy"></div>
+<script type="text/javascript" src="viddler.js"></script>
+<script type="text/javaScript">
+swfobject.embedSWF("jsViddler.swf", "viddlerProxy", 1, 1);
+$(document).ready(function(){
+jsViddler.setKey("YOUR API KEY HERE");
+jsViddler.echo("I like turtles", function(msg) { alert(msg); });
+jsViddler.getUserVideos("sandieman", function(response) {
+    console.log(response);
+});
+});
+</script>
