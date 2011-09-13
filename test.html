@@ -16,6 +16,11 @@
     <dd><input type="text" size="40" maxlength="40" name="echo" id="echo" /><input value="api.echo" type="button" onclick="onEchoClick(this.form);" />
     <dt>User</dt>
     <dd><input type="text" size="40" maxlength="40" name="user" id="user" /><input value="videos.getByUser" type="button" onclick="onUserVideosClick(this.form);" />
+    <dt>Any</dt>
+    <dd>
+        <p>API Method: <input type="text" size="30" maxlength="30" name="methodName" id="methodName" /></p>
+        <p>JSON Arguments: <input type="text" size="30" maxlength="30" name="methodArgs" id="methodArgs" /><input value="Go" type="button" onclick="onAnyClick(this.form);" /></p>
+    </dd>
     <dt>Response</dt>
     <dd><textarea rows="10" cols="80" wrap="soft" name="apiresponse" id="apiresponse"></textarea></dd>
 </dl>
@@ -42,17 +47,21 @@ swfobject.embedSWF(
     flashvars, params, attributes);
 // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
 swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+var handleApiResponse = function(resp) {
+    document.getElementById("apiresponse").value = JSON.stringify(resp);
+};
 var onEchoClick = function(f) {
     window.jsViddler.setKey(f.apikey.value);
-    window.jsViddler.echo(f.echo.value, function(msg){
-        document.getElementById("apiresponse").value = msg;
-    });
+    window.jsViddler.echo(f.echo.value, handleApiResponse);
 };
 var onUserVideosClick = function(f) {
     window.jsViddler.setKey(f.apikey.value);
-    window.jsViddler.getUserVideos(f.user.value, function(resp){
-        document.getElementById("apiresponse").value = JSON.stringify(resp);
-    });
+    window.jsViddler.getUserVideos(f.user.value, handleApiResponse);
+};
+var onAnyClick = function(f) {
+    var o = JSON.parse(f.methodArgs.value);
+    window.jsViddler.setKey(f.methodName.value);
+    window.jsViddler.apiCall(n,"GET", o, handleApiResponse);
 };
 </script>
 <script type="text/javascript" src="viddler.js"></script>

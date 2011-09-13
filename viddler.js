@@ -38,6 +38,7 @@
 		setCallback: function(cb) { window.onViddler = cb; },
 		openRequests: function() { return openRequests; },
 		setKey: function(key) { viddler.setKey(key); },
+		apiCall: function(n,m,a,cb) { api(n, m, a, cb); },
 		echo: function(m, cb) { api("viddler.api.echo", "GET", { message: m }, function(r) { cb(r.echo_response.message); }); },
 		getUserVideos: function(u, cb) { api("viddler.videos.getByUser", "GET", { user: u }, function(r) { cb(r.list_result); }); } 
 	};
